@@ -9,6 +9,8 @@ public class Empregado extends Pessoa {
 	private String senha;
 	private String perfil;
 
+	private boolean enable = true;
+
 	public String getLogin() {
 		return login;
 	}
@@ -33,10 +35,19 @@ public class Empregado extends Pessoa {
 		this.perfil = perfil;
 	}
 
+	public boolean isEnable() {
+		return enable;
+	}
+
+	public void setEnable(boolean enable) {
+		this.enable = enable;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
+		result = prime * result + (enable ? 1231 : 1237);
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((perfil == null) ? 0 : perfil.hashCode());
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
@@ -52,6 +63,8 @@ public class Empregado extends Pessoa {
 		if (getClass() != obj.getClass())
 			return false;
 		Empregado other = (Empregado) obj;
+		if (enable != other.enable)
+			return false;
 		if (login == null) {
 			if (other.login != null)
 				return false;
@@ -69,5 +82,6 @@ public class Empregado extends Pessoa {
 			return false;
 		return true;
 	}
-
+	
+	
 }

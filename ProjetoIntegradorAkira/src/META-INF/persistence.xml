@@ -6,7 +6,6 @@
 	<persistence-unit name="integraPU">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>entidades.Cliente</class>
-		<class>entidades.Empregado</class>
 		<class>entidades.Plataforma</class>
 		<class>entidades.Genero</class>
 		<class>entidades.Produtora</class>
@@ -19,6 +18,7 @@
 		<class>entidades.Dependente</class>
 		<class>entidades.Midia</class>
 		<class>entidades.ItensLocacao</class>
+		<class>entidades.Empregado</class>
 		
 
 		<properties>

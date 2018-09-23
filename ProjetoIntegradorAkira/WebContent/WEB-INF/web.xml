@@ -5,7 +5,7 @@
 	id="WebApp_ID" version="3.1">
 	<display-name>ProjetoIntegradorAkira</display-name>
 	<welcome-file-list>
-		<welcome-file>principal.xhtml</welcome-file>
+		<welcome-file>template.xhtml</welcome-file>
 	</welcome-file-list>
 
 	<context-param>
@@ -45,4 +45,23 @@
 		<mime-type>application/font-woff2</mime-type>
 	</mime-mapping>
 
+<!--   Inicio da configuração do Spring Security -->
+  <listener>
+  	<listener-class>
+    	org.springframework.web.context.ContextLoaderListener
+    </listener-class>
+  </listener>
+        
+  <filter>
+  	<filter-name>springSecurityFilterChain</filter-name>
+    <filter-class>                     
+    	org.springframework.web.filter.DelegatingFilterProxy
+  	</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>springSecurityFilterChain</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping> 
 </web-app>
+
+
