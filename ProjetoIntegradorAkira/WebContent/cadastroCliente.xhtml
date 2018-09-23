@@ -15,23 +15,33 @@
 <ui:composition template="template.xhtml">
 	<ui:define name="corpo">
 
-		
 
 
-				<div style="background-color: gray">
 
-					<h4 style="text-align: center;">Cadastro de cliente</h4>
+		<div style="background-color: gray">
 
-				</div>
+			<h4
+				style="position: fixed; top: 100; width: 100%; height: 30px; text-align: center; z-index: 100; color: black;">Cadastro
+				de cliente</h4>
 
-				<br />
+		</div>
+
+		<br />
+		<br />
+		<br />
+
+		<div id="tudo">
+
+			<div id="topo"></div>
+
+			<div id="conteudo">
 
 
 				<div class="center-form">
 					<h:form style="padding: 20px;" id="formularioCadastroCliente">
 
-
-						<h:panelGrid columns="2">
+						<h:panelGrid columns="2"
+							style="display:flex;justify-content:center;align-items:center;">
 							<h:panelGrid columns="1">
 								<h:outputText value="nome" />
 								<p:inputText id="nomeEmpregado"
@@ -80,11 +90,7 @@
 						</h:panelGrid>
 					</h:form>
 				</div>
-				<br />
-				
-					<hr />
-					
-					
+				<br /> <br />
 				<h:form id="formularioTabelaCliente">
 					<p:dataTable var="cli" value="#{clienteMB.clientes}">
 						<p:column headerText="Id">
@@ -129,8 +135,24 @@
 					</ui:insert>
 				</div>
 
-		
+			</div>
+		</div>
 
+		<style>
+#rodape {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 30px;
+	margin-left: 0;
+	z-index: 100;
+	background-color: #ffffff;
+}
+
+#tudo {
+	padding-bottom: 120px;
+}
+</style>
 	</ui:define>
 </ui:composition>
 
