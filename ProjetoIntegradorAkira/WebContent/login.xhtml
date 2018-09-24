@@ -7,68 +7,160 @@
 	xmlns:pe="http://primefaces.org/ui/extensions"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-	<style>
-.container {
-	width: 100vw;
-	height: 100vh;
-	background: #6C7A89;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-}
 
-.box {
-	text-align: center;
-	width: 200px;
-	height: 200px;
-	background: #fff;
-	width: 250px;
-	background-color: #a3a3a3;
-	border: solid 1px #5b5b5b;
-	border-radius: 10px;
+
+<h:head>
+
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+		crossorigin="anonymous"></link>
+
+	<link href="../../dist/css/bootstrap.min.css" rel="stylesheet"></link>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"></link>
+	<link href="signin.css" rel="stylesheet"></link>
+
+</h:head>
+
+<style>
+body {
+	height: 100%;
 }
 
 body {
-	margin: 0px;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	padding-top: 200px;
+	padding-bottom: 40px;
+	background-image: url('https://cdn.discordapp.com/attachments/421847829070479360/492763058561875995/synthwave-akira-designedbywizards-19201080.jpg');
+	background-image: no-repeat;
+	background-position: 330px;
+	
+}
+
+.form-signin {
+	width: 100%;
+	max-width: 330px;
+	padding: 15px;
+	margin: auto;
+}
+
+.form-signin .form-control:focus {
+	z-index: 2;
+}
+
+.form-signin input[type="email"] {
+	margin-bottom: -1px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+	margin-bottom: 10px;
+	border-top-left-radius: 0;
 }
 </style>
 
-</h:head>
-<body>
+<h:body>
 
-	<div class="box-parent-login">
-		<div class="well bg-white box-login">
-			<h1 class="ls-login-logo">locaweb</h1>
-			<form role="form">
-				<fieldset>
+	<div
+		style="background: #ffffff; box-shadow: 3px 2px 10px 3px #ffffff; width: 100%; max-width: 330px; padding: 15px; margin: auto; box-sizing: border-box; text-align: left !important; border: solid 1px #5b5b5b; border-radius: 20px 20px 20px 20px;">
 
-					<div class="form-group ls-login-user">
-						<label for="userLogin">Usuário</label> <input
-							class="form-control ls-login-bg-user input-lg" id="userLogin"
-							type="text" aria-label="Usuário" placeholder="Usuário"/>
+		<div>
+
+			<form id="LoginForm" action="j_spring_security_check"
+								method="post">
+				<div class="">
+					<div class="box">
+
+
+						<h:outputText value="E-mail ou senha incorretos"
+							rendered="#{param.error==true}" />
+
+
+						<h:panelGrid columns="1" styleClass="col-md-12  col-xs-12 ">
+							<div id="imagem">
+								<img
+									src="http://cdn.shopify.com/s/files/1/1869/0319/products/artwork_2FM4uGpSqQ1suxaCVhYmZX-9XwC1FuMAFClsUvxjtiG-Rp0zDZilCAkdvTK3kBcP-color-none_1024x1024.png?v=1523171388"
+									width="150"
+									style="display: block; margin-left: auto; margin-right: auto; border-radius: 100%; object-fit: cover; width: 150px;"></img>
+							</div>
+
+
+							<br />
+							<br />
+
+
+							<div id="frmLogin" >
+								<label style="color: black;">E-mail</label>
+
+								<p:inputText required="true" id="j_username"
+									styleClass="col-md-12 col-xs-12"
+									placeholder="Digite seu e-mail"
+									style="text-align:center; color:black;" />
+
+
+								<label style="color: black;" > Senha</label>
+								<p:password  required="true" id="j_password"
+									styleClass="col-md-12 col-xs-12" placeholder="Digite sua senha"
+									style="text-align:center" />
+
+
+								<br />
+
+
+								<h:commandButton value="Entrar"
+									styleClass="ui-priority-primary btn btn-block"
+									style="width: 100px; height: 45px;color:black; margin-left: auto; margin-right: auto"
+									color="black" />
+
+								<br />
+
+
+								<div id="Esqueceusenha" style="text-align: center">
+									<span style="color: black;">Esqueceu a senha?</span> <a
+										href="recuperar-senha.jsf">Recuperar</a>
+								</div>
+
+								<div id="Cadastro" style="text-align: center">
+									<span style="color: black;">Precisando de uma conta?</span> <a
+										href="recuperar-senha.jsf">Registre-se</a>
+								</div>
+
+
+							</div>
+						</h:panelGrid>
 					</div>
+				</div>
 
-					<div class="form-group ls-login-password">
-						<label for="userPassword">Senha</label> <input
-							class="form-control ls-login-bg-password input-lg"
-							id="userPassword" type="password" aria-label="Senha"
-							placeholder="Senha"/>
-					</div>
-
-					<a href="#" class="ls-login-forgot">Esqueci minha senha</a> <input
-						type="submit" value="Entrar"
-						class="btn btn-primary btn-lg btn-block"/>
-					<p class="txt-center ls-login-signup">
-						Não possui um usuário na Locaweb? <a href="#">Cadastre-se
-							agora</a>
-					</p>
-
-				</fieldset>
 			</form>
 		</div>
 	</div>
-</body>
+
+
+	<div id="rodape">
+		<ui:insert name="rodape">
+			<ui:include src="/rodape.xhtml" />
+		</ui:insert>
+	</div>
+
+	<style>
+#rodape {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 30px;
+	margin-left: 0;
+	z-index: 100;
+	background-color: #ffffff;
+}
+
+#tudo {
+	padding-bottom: 120px;
+}
+</style>
+
+</h:body>
 </html>
