@@ -96,13 +96,15 @@ public class DAOGenerico<T> {
 		entityManager = Fabrica.get().createEntityManager();
 		Query query = null;
 		try {
+			
 			query = entityManager.createQuery("from " + classe.getSimpleName() + " where " + consulta);
+			return query.getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			entityManager.close();
 		}
-		return query.getResultList();
+		return null;
 	}
 
 }
