@@ -2,21 +2,145 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
-
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="template.xhtml">
 	<ui:define name="corpo">
+		<p:messages id="mensagem" />
+		
+			<p:commandButton update="formTabelaItens" value="Pesquisar"
+						onclick="PF('pesquisaVenda').show();" />
+		
+		<h:form id="formularioMovimentoVendas">
+			<h:panelGrid columns="1">
+				<h:panelGrid columns="4">
+					<!-- linha 1***********************************************************-->
+				
+
+					<p:commandButton update="@form, mensagem" value="Nova venda"
+						actionListener="#{vendaMB.novaVenda()}" />
+
+					<p:commandButton update="@form" value="Finalizar venda"
+						actionListener="#{vendaMB.finalizarVenda()}" />
+
+				</h:panelGrid>
+				<h:panelGrid columns="6">
+				
+					<h:outputText value="Vendedor" />
+					<p:selectOneMenu value="#{vendaMB.venda.funcionario}"
+						converter="conveterEmpregado">
+						<f:selectItems value="#{empregadoMB.empregados}" var="func"
+							itemLabel="#{func.nome}" itemValue="#{func}" />
+					</p:selectOneMenu>
+					<!-- 				</h:panelGrid> -->
+
+					<h:outputText value="Data Venda" />
+					<p:calendar id="dataVenda" pattern="dd/MM/yyyy"
+						value="#{vendaMB.venda.dataVenda}" />
+				</h:panelGrid>
 
 
-		<div style="background-color: gray">
 
-			<h4 style="text-align: center;">Locação</h4>
+				<h:panelGrid columns="3">
+					<!-- linha 3************************************************************-->
+					<h:outputText value="Cliente" />
+					<p:selectOneMenu value="#{vendaMB.venda.cliente}"
+						converter="conveterCliente">
+						<f:selectItems value="#{clienteMB.clientes}" var="cli"
+							itemLabel="#{cli.nome}" itemValue="#{cli}" />
+					</p:selectOneMenu>
 
-		</div>
 
+					<!-- linha 4************************************************************-->
+					<h:outputText value="Observação" />
+					<p:inputText id="obsVenda" value="#{vendaMB.venda.observacao}" />
+					<p:message for="obsVenda" />
+				</h:panelGrid>
+				<p:separator />
+				<h:panelGrid columns="6">
+
+					<h:outputText value="Produto" />
+					<p:selectOneMenu value="#{vendaMB.itensVenda.produto}"
+						converter="conveterProduto">
+						<f:selectItems value="#{produtoMB.produtos}" var="prod"
+							itemLabel="#{prod.descricao}" itemValue="#{prod}" />
+					</p:selectOneMenu>
+
+					<h:outputText value="Quantidade" />
+					<p:inputText id="qtdProduto"
+						value="#{vendaMB.itensVenda.quantidade}" />
+			
+
+					<p:commandButton update="tabelaItens,qtdProduto" value="ADD"
+						actionListener="#{vendaMB.adicionarItem()}" />
+					<!-- 	        	<p:commandButton update="@form, formTabelaItens" value="ADD" -->
+					<!-- 					actionListener="{vendaMB.adicionarItem()}" /> -->
+				</h:panelGrid>
+			</h:panelGrid>
+			<!-- 	</h:form> -->
+			<br />
+			<!-- 	<h:form id="formTabelaItens"> -->
+			<p:dataTable id="tabelaItens" var="itens"
+				value="#{vendaMB.listaItensVenda}">
+				<p:column headerText="Produto">
+					<h:outputText value="#{itens.produto.descricao}" />
+				</p:column>
+				<p:column headerText="Qtde">
+					<h:outputText value="#{itens.quantidade}" />
+				</p:column>
+				<p:column headerText="Vlr Unit">
+					<h:outputText value="#{itens.valorUnitario}" />
+				</p:column>
+				<p:column headerText="Vlr Total">
+					<h:outputText value="#{itens.valorTotal}" />
+				</p:column>
+				<p:column headerText="Remover">
+					<!-- 				<p:commandButton value="Alterar" update="formCadastroClientes" onclick="PF('cadastroCliente').show();"> -->
+					<!-- 					<f:setPropertyActionListener value="#{cli}" target="{clienteMB.cliente}"/> -->
+					<!-- 				</p:commandButton > -->
+					<p:commandButton value="X"
+						actionListener="#{vendaMB.removerItem()}" update="@form">
+						<p:confirm header="Confirmação" message="Deseja remover o item?"
+							icon="ui-icon-alert" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+
+			<!--     	<p:commandButton update="@form,formularioMovimentoVendas" value="Finalizar venda" -->
+			<!-- 				actionListener="{vendaMB.finalizarVenda()}" /> -->
+		</h:form>
+		<p:dialog header="Modal Dialog" widgetVar="pesquisaVenda" modal="true" width="500"  
+			showEffect="fade" hideEffect="fade"  height="500" >
+			<h:form id="formTabelaItens">
+				<p:dataTable id="tabelaItens" var="obj" value="#{vendaMB.vendas}">
+					<p:column headerText="Cliente">
+						<h:outputText value="#{obj.cliente.nome}" />
+					</p:column>
+					<p:column headerText="Funcionário">
+						<h:outputText value="#{obj.funcionario.nome}" />
+					</p:column>
+					<p:column headerText="Data">
+						<h:outputText value="#{obj.dataVenda}"  >
+						<f:convertDateTime  type="date"  pattern="dd/MM/yyyy"/>
+						
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Vlr Total">
+						<h:outputText value="#{obj.valorTotalVenda}" >
+						<f:convertNumber pattern="¤#,##0.00" currencySymbol="$" />
+						</h:outputText>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</p:dialog>
 	</ui:define>
 </ui:composition>
-
-
 </html>

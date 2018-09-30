@@ -39,50 +39,49 @@
 				<div class="center-form">
 					<h:form style="padding: 20px;" id="formularioCadastroCliente">
 
-						<h:panelGrid columns="2" 
-							style="display:flex;justify-content:center;align-items:center;">
-							<h:panelGrid columns="1">
-								<h:outputText value="nome" />
-								<p:inputText id="nomeEmpregado"
+						<h:panelGrid columns="3"  
+							style="display:flex;justify-content:center;align-items:center; margin:0px 0px 0px 10px">
+								
+								<h:outputText value="nome" style=" margin-bottom:10px "/>
+							<p:inputText id="nomeEmpregado"  
 									value="#{clienteMB.cliente.nome}" required="true"
 									requiredMessage="Preencha o nome" />
 								<p:message for="nomeEmpregado" />
-							</h:panelGrid>
-							<h:panelGrid columns="1">
+								
+							
+								
 								<h:outputText value="Data de Nascimento" />
 								<p:calendar id="dataEmpregado"
 									value="#{clienteMB.cliente.dtNasc}" required="true"
 									requiredMessage="Preencha a data de nascimento" />
 								<p:message for="dataEmpregado" />
-							</h:panelGrid>
-							<h:panelGrid columns="1">
+							
 								<h:outputText value="RG" />
 								<p:inputMask mask="**.***.***-*" id="rgEmpregado"
 									value="#{clienteMB.cliente.rg}" required="true"
 									requiredMessage="Preencha o rg" />
 								<p:message for="rgEmpregado" />
-							</h:panelGrid>
-							<h:panelGrid columns="1">
+								
 								<h:outputText value="CPF" />
 								<p:inputMask mask="***.***.***-**" id="cpfEmpregado"
 									value="#{clienteMB.cliente.cpf}" required="true"
 									requiredMessage="Preencha o cpf" />
 								<p:message for="cpfEmpregado" />
-							</h:panelGrid>
-							<h:panelGrid columns="1">
+								
 								<h:outputText value="Endereço" />
 								<p:inputText id="enderecoEmpregado"
 									value="#{clienteMB.cliente.endereco}" required="true"
 									requiredMessage="Preencha o endereco" />
 								<p:message for="enderecoEmpregado" />
-							</h:panelGrid>
-							<h:panelGrid columns="1">
+								
 								<h:outputText value="E-mail" />
 								<p:inputText id="emailEmpregado"
 									value="#{clienteMB.cliente.email}" required="true"
 									requiredMessage="Preencha o email" />
 								<p:message for="emailEmpregado" />
-							</h:panelGrid>
+								
+								<h:outputText value="" />
+								
 							<p:commandButton update="@form,formularioTabelaCliente"
 								value="Cadastrar" actionListener="#{clienteMB.inserir()}" />
 
@@ -138,6 +137,19 @@
 		</div>
 
 		<style>
+		
+		
+		inputText{
+		
+		background-color: red;
+		
+		}
+		outputText{
+
+background-color: red;
+
+}
+		
 #rodape {
 	position: fixed;
 	bottom: 0;
