@@ -1,31 +1,11 @@
-
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:pe="http://primefaces.org/ui/extensions"
-	xmlns:p="http://primefaces.org/ui">
-
-
+	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-
-	<link rel="stylesheet"
-		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-		crossorigin="anonymous"></link>
-
-	<link href="../../dist/css/bootstrap.min.css" rel="stylesheet"></link>
-	<link rel="stylesheet"
-		href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-		crossorigin="anonymous"></link>
-	<link href="signin.css" rel="stylesheet"></link>
-
-</h:head>
-
-<style>
+	<style>
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 .btn {
@@ -194,26 +174,26 @@ body {
 	text-align: center;
 }
 
-/* input { */
-/* 	width: 100%; */
-/* 	margin-bottom: 10px; */
-/* 	background: rgba(0, 0, 0, 0.3); */
-/* 	border: none; */
-/* 	outline: none; */
-/* 	padding: 10px; */
-/* 	font-size: 13px; */
-/* 	color: #fff; */
-/* 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); */
-/* 	border: 1px solid rgba(0, 0, 0, 0.3); */
-/* 	border-radius: 4px; */
-/* 	box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.2), 0 1px 1px */
-/* 		rgba(255, 255, 255, 0.2); */
-/* 	-webkit-transition: box-shadow .5s ease; */
-/* 	-moz-transition: box-shadow .5s ease; */
-/* 	-o-transition: box-shadow .5s ease; */
-/* 	-ms-transition: box-shadow .5s ease; */
-/* 	transition: box-shadow .5s ease; */
-/* } */
+input {
+	width: 100%;
+	margin-bottom: 10px;
+	background: rgba(0, 0, 0, 0.3);
+	border: none;
+	outline: none;
+	padding: 10px;
+	font-size: 13px;
+	color: #fff;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	border-radius: 4px;
+	box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.2), 0 1px 1px
+		rgba(255, 255, 255, 0.2);
+	-webkit-transition: box-shadow .5s ease;
+	-moz-transition: box-shadow .5s ease;
+	-o-transition: box-shadow .5s ease;
+	-ms-transition: box-shadow .5s ease;
+	transition: box-shadow .5s ease;
+}
 
 input:focus {
 	box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.4), 0 1px 1px
@@ -221,91 +201,28 @@ input:focus {
 }
 </style>
 
+
+</h:head>
 <h:body>
+
 
 	<div class="login">
 		<h1>Login</h1>
 		<form method="post" id="LoginForm" action="j_spring_security_check">
 
-			<h:outputText style="color:white" value="E-mail ou senha incorretos"
-				rendered="#{param.error==true}" />
+			<input type="text" name="u" placeholder="E-mail" required="required" />
 
-			<p:inputText
-				style="width: 100%;
-	margin-bottom: 10px;
-	background: rgba(0, 0, 0, 0.3);
-	border: none;
-	outline: none;
-	padding: 10px;
-	font-size: 13px;
-	color: #fff;
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-	border: 1px solid rgba(0, 0, 0, 0.3);
-	border-radius: 4px;
-	box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.2), 0 1px 1px
-		rgba(255, 255, 255, 0.2);
-	-webkit-transition: box-shadow .5s ease;
-	-moz-transition: box-shadow .5s ease;
-	-o-transition: box-shadow .5s ease;
-	-ms-transition: box-shadow .5s ease;
-	transition: box-shadow .5s ease; "
-				
-				
-				type="text" name="u" placeholder="E-mail" required="required"
-				id="j_username" />
-
-				<p:password
-				style=" width: 100%;
-	margin-bottom: 10px;
-	background: rgba(0, 0, 0, 0.3);
-	border: none;
-	outline: none;
-	padding: 10px;
-	font-size: 13px;
-	color: #fff;
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-	border: 1px solid rgba(0, 0, 0, 0.3);
-	border-radius: 4px;
-	box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.2), 0 1px 1px
-		rgba(255, 255, 255, 0.2);
-	-webkit-transition: box-shadow .5s ease;
-	-moz-transition: box-shadow .5s ease;
-	-o-transition: box-shadow .5s ease;
-	-ms-transition: box-shadow .5s ease;
-	transition: box-shadow .5s ease;"
-				type="password" name="p" placeholder="Senha" required="required"
-				id="j_password" />
+			<input type="password" name="p" placeholder="Senha"
+				required="required" />
 
 
 			<button type="submit" class="btn btn-primary btn-block btn-large">Entrar</button>
-
-
-
+			
+			
+			
 		</form>
 	</div>
 
-
-	<div id="rodape">
-		<ui:insert name="rodape">
-			<ui:include src="/rodape.xhtml" />
-		</ui:insert>
-	</div>
-
-	<style>
-#rodape {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	height: 30px;
-	margin-left: 0;
-	z-index: 100;
-	background-color: #ffffff;
-}
-
-#tudo {
-	padding-bottom: 120px;
-}
-</style>
 
 </h:body>
 </html>
