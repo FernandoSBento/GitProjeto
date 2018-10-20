@@ -11,14 +11,14 @@
 		<class>entidades.Produtora</class>
 		<class>entidades.Locacao</class>
 		<class>entidades.Devolucao</class>
-		<class>entidades.Jogos</class>
 		<class>entidades.Pessoa</class>
 		<class>entidades.Obra</class>
-		<class>entidades.Filmes</class>
 		<class>entidades.Dependente</class>
 		<class>entidades.Midia</class>
 		<class>entidades.ItensLocacao</class>
 		<class>entidades.Empregado</class>
+		<class>entidades.Filmes</class>
+		<class>entidades.Jogos</class>
 		
 
 		<properties>
